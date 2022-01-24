@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+Color colorTheme = const Color(0xff0a0e21);
 void main() {
   runApp(const MyApp());
 }
@@ -11,18 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFF0A0E21),
+        appBarTheme: AppBarTheme(color: Color(0xFF0A0E21)),
+        scaffoldBackgroundColor: const Color(0xFF0A0E21),
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.purple,
+        ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -31,52 +29,115 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Calcule IMC'),
-      ),
-      body: Center(
-        child: const Text(
-          'Calcul en cours',
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      appBar: Mabar(),
+      body: MesblocsIMC(),
     );
+  }
+
+  Mabar() {
+    return AppBar(
+      backgroundColor: colorTheme,
+      leading: IconButton(
+        icon: Icon(
+          Icons.menu, //Icon menu hamburger
+          color: Colors.white,
+        ),
+        onPressed: null,
+      ),
+      title: Text('Calcule IMC'),
+    );
+  }
+}
+
+class MesblocsIMC extends StatefulWidget {
+  const MesblocsIMC({Key? key}) : super(key: key);
+  @override
+  _MesblocsIMC createState() => _MesblocsIMC();
+}
+
+class _MesblocsIMC extends State<MesblocsIMC> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200.0,
+                width: 170.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFF1D1E33)),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200.0,
+                width: 170.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFF1D1E33)),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200.0,
+                width: 170.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFF1D1E33)),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200.0,
+                width: 170.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFF1D1E33)),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 200.0,
+                width: 170.0,
+                margin: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: const Color(0xFF1D1E33)),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ));
   }
 }
